@@ -22,7 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/fetch" element={<FetchFormData />} />
           <Route path="/contact" element={<Form/>} />
-          <Route path="/" element={<h1 className="text-2xl font-bold">Welcome to the Home Page</h1>} />
+          <Route path="/" element={<h1 className="text-2xl font-bold">Welcome to the Home Page of santosh kumar</h1>} />
         </Routes>
       </div>
     </Router>
