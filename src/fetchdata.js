@@ -8,7 +8,7 @@ export default function FetchFormData() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("https://sample_url.com/api");
+        const response = await axios.get("http://localhost:5000/fetch");
         setData(response.data);
       } catch (err) {
         setError("Error fetching data");
