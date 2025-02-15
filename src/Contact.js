@@ -30,7 +30,7 @@ export default function Form() {
     setErrors(newErrors);
     if (valid) {
       try {
-        const response = await axios.post("http://localhost:5000/contact", formData);
+        const response = await axios.post("https://unk-garc.onrender.com/contact", formData);
         alert(`Submitted: \nName: ${formData.name}\nEmail: ${formData.email}\nResponse: ${JSON.stringify(response.data)}`);
       } catch (error) {
         alert("Error submitting data");
