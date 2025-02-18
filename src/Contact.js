@@ -14,7 +14,6 @@ export default function Form() {
     e.preventDefault();
     let valid = true;
     let newErrors = { name: "", email: "" };
-
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
       valid = false;
@@ -31,7 +30,9 @@ export default function Form() {
     if (valid) {
       try {
         const response = await axios.post("https://unk-garc.onrender.com/contact", formData);
-        alert(`Submitted: \nName: ${formData.name}\nEmail: ${formData.email}\nResponse: ${JSON.stringify(response.data)}`);
+        alert(`Submitted: \nName: ${formData.name}\nEmail: ${formData.email}\nResponse: ${JSON.stringify(response.data)}
+        `);
+        setFormData({name:"",email:""});
       } catch (error) {
         alert("Error submitting data");
         console.error("Error:", error);
