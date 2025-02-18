@@ -2,34 +2,27 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function Delda() {
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [formData, setFormData] = useState({ name: ""});
   const [msg, setMsg] = useState(""); // Message state
   const [deleted, setDeleted] = useState(false); // Tracks if a delete happened
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
   const handleDelete = async (e) => {
     e.preventDefault(); // Prevent form submission from reloading the page
     try {
-      const un = formData.name.trim();
-      if (!un) {
-        alert("Please enter a name to delete.");
-        return;
-      }
-      const response = await axios.delete(`https://unk-garc.onrender.com/delete/:${un}`);
-      setFormData({ name: "", email: "" }); // Clear form
+      const response = await axios.delete("http://localhost:5000/delete",{data: formData }); // Corrected request format
+      setFormData({ name: "" }); // Only reset the existing field
       setDeleted(true); // Update state to trigger re-render
       setMsg(response.data.message); // Store the delete message
-
     } catch (error) {
       console.error("Error deleting entry:", error);
       setDeleted(true);
       setMsg("Error deleting entry.");
     }
   };
+  
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
       <form onSubmit={handleDelete} className="bg-white p-6 rounded-lg shadow-md w-80">
